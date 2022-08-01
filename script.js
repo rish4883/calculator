@@ -29,3 +29,15 @@ function operate(op, a, b) {
     }
     return result;
 }
+
+const display = document.querySelector('.display');
+const keys = document.querySelectorAll('.keys div');
+
+keys.forEach( (key) => {
+    key.addEventListener('click', updateDisplay)
+});
+
+function updateDisplay(event) {
+    let input = event.target.textContent;
+    display.textContent += input;
+}
