@@ -31,9 +31,9 @@ function operate(op, a, b) {
 }
 
 const display = document.querySelector('.display');
-const keys = document.querySelectorAll('.keys div');
+const numKeys = document.querySelectorAll('.keys .num');
 
-keys.forEach( (key) => {
+numKeys.forEach( (key) => {
     key.addEventListener('click', updateDisplay)
 });
 
