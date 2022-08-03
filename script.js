@@ -62,6 +62,10 @@ operatorKeys.forEach( (key) => {
 });
 
 function handleOperatorClick(event) {
+    if(equalKeyPressed) {
+        clearDisplay();
+        equalKeyPressed = false;
+    }
     if(operatorCount) {
         calcAndDisplay();
         numLog = result;
@@ -82,10 +86,15 @@ equal.addEventListener('click', () => {
 
 function calcAndDisplay() {
     num2 = Number(numLog);
+    if((operator === '/') && (num2 === 0)) {
+        clearDisplay();
+        alert("YOU ARE HACKED!");
+        return;
+    }
     numLog = "";
     result = operate(operator, num1, num2);
     smallDisplay.textContent = bigDisplay.textContent + '=';
-    bigDisplay.textContent = result;
+    bigDisplay.textContent = round(result);
 }
 
 const clear = document.querySelector('.clear');
@@ -98,3 +107,9 @@ function clearDisplay() {
     smallDisplay.textContent = "";
     operatorCount = 0;
 }
+
+function round(x) {
+    let digit = Math.max(Math.floor(Math.log10(Math.abs(x))), 0) + 1;
+    let digitsAfterDecimal = 12 - digit;           //number of decimal places to round off to, to keep count below 13
+    return Math.floor(x * (10 ** digitsAfterDecimal)) / (10 ** digitsAfterDecimal);
+  }
