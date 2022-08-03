@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Saira:wght@400;500&display=swap');
 
 .calculator {
+    margin: auto;
     background-color: rgb(172, 172, 172);
 
-    width: 400px;
+    width: 280px;
     padding: 10px;
 
     display: flex;
@@ -13,25 +14,40 @@
 }
 
 .display {
-    color: white;
     background-color: rgb(105, 105, 105);
-    font-family: 'Saira', sans-serif;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 60px;
-
     align-self: stretch;
-    height: 60px;
+    
+    height: 80px;
     padding-left: 5px;
 
     border: 1px solid rgb(220, 220, 220);
     border-radius: 4px;
 }
 
+.display .small {
+    color: rgb(231, 231, 231);
+    height: 25px;
+    font-family: 'Saira', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.display .big {
+    color: white;
+    height: 55px;
+    font-family: 'Saira', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 55px;
+}
+
 .keys {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 1em;
+    column-gap: 1.3em;
 }
 
 .keys div {
