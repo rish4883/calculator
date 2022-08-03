@@ -25,7 +25,7 @@ function operate(op, a, b) {
             break;
         case '/': result = divide(a, b); 
             break;
-        default: console.error("Invalid Operator!")
+        default: result = (bigDisplay.textContent || "0");
     }
     return result;
 }
@@ -39,12 +39,18 @@ let num2;
 let operator = "";
 let numLog = "";
 let operatorCount = 0;
+let result;
+let equalKeyPressed = false;
 
 numKeys.forEach( (key) => {
     key.addEventListener('click', updateDisplay)
 });
 
 function updateDisplay(event) {
+    if(equalKeyPressed) {
+        clearDisplay();
+        equalKeyPressed = false;
+    }
     bigDisplay.textContent += event.target.textContent;
     numLog += event.target.textContent;
 }
@@ -58,8 +64,7 @@ operatorKeys.forEach( (key) => {
 function handleOperatorClick(event) {
     if(operatorCount) {
         calcAndDisplay();
-        operator = event.target.textContent; 
-        bigDisplay.textContent += event.target.textContent;
+        numLog = result;
     }
     num1 = Number(numLog);
     numLog = "";
@@ -71,25 +76,25 @@ function handleOperatorClick(event) {
 const equal = document.querySelector('.equal');
 
 equal.addEventListener('click', () => {
-    num2 = Number(numLog);
-    numLog = "";
-    let result = operate(operator, num1, num2);
-    smallDisplay.textContent = bigDisplay.textContent + '=';
-    bigDisplay.textContent = result;
+    calcAndDisplay();
+    equalKeyPressed = true;
 });
 
 function calcAndDisplay() {
     num2 = Number(numLog);
     numLog = "";
-    let result = operate(operator, num1, num2);
+    result = operate(operator, num1, num2);
     smallDisplay.textContent = bigDisplay.textContent + '=';
     bigDisplay.textContent = result;
 }
 
 const clear = document.querySelector('.clear');
 
-clear.addEventListener('click', () => {
+clear.addEventListener('click', clearDisplay);
+
+function clearDisplay() {
     numLog = "";
     bigDisplay.textContent = "";
     smallDisplay.textContent = "";
-});
+    operatorCount = 0;
+}
