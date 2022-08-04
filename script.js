@@ -41,6 +41,7 @@ let numLog = "";
 let operatorCount = 0;
 let result;
 let equalKeyPressed = false;
+let decimalPointClick = false;
 
 numKeys.forEach( (key) => {
     key.addEventListener('click', updateDisplay)
@@ -72,6 +73,7 @@ function handleOperatorClick(event) {
     }
     num1 = Number(numLog);
     numLog = "";
+    decimalPointClick = false;
     operator = event.target.textContent; 
     bigDisplay.textContent += event.target.textContent;
     operatorCount++;
@@ -106,10 +108,20 @@ function clearDisplay() {
     bigDisplay.textContent = "";
     smallDisplay.textContent = "";
     operatorCount = 0;
+    decimalPointClick = false;
 }
 
 function round(x) {
     let digit = Math.max(Math.floor(Math.log10(Math.abs(x))), 0) + 1;
     let digitsAfterDecimal = 12 - digit;           //number of decimal places to round off to, to keep count below 13
     return Math.floor(x * (10 ** digitsAfterDecimal)) / (10 ** digitsAfterDecimal);
-  }
+}
+
+const decimalPoint = document.querySelector('.decimal-point');
+
+decimalPoint.addEventListener('click', (e) => {
+    if(decimalPointClick) return;
+    bigDisplay.textContent += e.target.textContent;
+    numLog += e.target.textContent;
+    decimalPointClick = true;
+});
