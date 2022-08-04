@@ -125,3 +125,21 @@ decimalPoint.addEventListener('click', (e) => {
     numLog += e.target.textContent;
     decimalPointClick = true;
 });
+
+const deleteKey = document.querySelector('.delete');
+
+deleteKey.addEventListener('click', () => {
+    let displayValue = bigDisplay.textContent;
+    let lastChar = displayValue[displayValue.length - 1];
+    if(isNaN(lastChar) && lastChar != ".") {        //To check if the last charecter is an operator
+        operator = "";
+        bigDisplay.textContent = displayValue.slice(0, displayValue.length - 1);
+        decimalPointClick = true;
+        // operatorCount = 0;
+    }
+    else {
+        numLog = numLog.slice(0, numLog.length - 1);
+        bigDisplay.textContent = displayValue.slice(0, displayValue.length - 1);
+    }
+
+});

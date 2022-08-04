@@ -2,10 +2,11 @@
 
 .calculator {
     margin: auto;
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(33, 33, 33);
 
     width: 280px;
     padding: 10px;
+    border-radius: 15px;
 
     display: flex;
     flex-direction: column;
@@ -19,9 +20,10 @@
     
     height: 80px;
     padding-left: 5px;
+    margin: 3px 5px;
 
-    border: 1px solid rgb(220, 220, 220);
-    border-radius: 4px;
+    border: 1px solid rgb(109, 109, 109);
+    border-radius: 8px;
 }
 
 .display .small {
@@ -45,19 +47,19 @@
 .small-key div div,
 .big-key div {
     color: white;
-    background-color: rgb(105, 105, 105);
+    background-color: rgb(138, 138, 138);
 
     font-family: 'Saira', sans-serif;
     font-weight: 500;
     font-size: 22px;
 
     text-align: center;
-    line-height: 40px;
+    line-height: 45px;
 
-    height: 40px;
+    height: 45px;
     width: 50px;
-    border: 1px solid #363636;
-    border-radius: 3px;
+    border: 1px solid #000000;
+    border-radius: 50%;
 }
 
 .keys .small-key {
@@ -90,5 +92,16 @@
 
 .big-key .clear,
 .big-key .delete {
+    height: 45px;
     width: 120px;
+    border-radius: 25px;
+    
+}
+
+.small-key .operators .operator {
+    background-color: #d48d00;
+}
+
+.small-key .numbers .equal {
+    background-color: rgb(87, 87, 87);
 }
