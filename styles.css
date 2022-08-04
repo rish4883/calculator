@@ -42,15 +42,8 @@
     line-height: 55px;
 }
 
-.keys {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1em;
-    column-gap: 1.3em;
-}
-
-.keys div {
+.small-key div div,
+.big-key div {
     color: white;
     background-color: rgb(105, 105, 105);
 
@@ -65,4 +58,37 @@
     width: 50px;
     border: 1px solid #363636;
     border-radius: 3px;
+}
+
+.keys .small-key {
+    display: flex;
+}
+
+.small-key .numbers {
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    column-gap: 20px;
+}
+
+.small-key .operators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    column-gap: 20px;
+}
+
+.keys .big-key {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 1em;
+}
+
+.big-key .clear,
+.big-key .delete {
+    width: 120px;
 }
